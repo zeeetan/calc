@@ -45,7 +45,7 @@ public class Main {
                 }
                 case "*" -> {
                     int answerRomMultiply = posA * posB;
-                    String answerRoman = ROMAN[answerRomMultiply - 1];
+                    String answerRoman = ROMAN[answerRomMultiply];
                     System.out.println(answerRoman);
                     break;
                 }
