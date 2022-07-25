@@ -6,9 +6,7 @@ import java.util.Scanner;
 public class Main {
     private static final String[] NUM = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
     private static final String[] ROMAN = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII", "XXVIII", "XXIX", "XXX", "XXXI", "XXXII", "XXXIII", "XXXIV", "XXXV", "XXXVI", "XXXVII", "XXXVIII", "XXXIX", "XL", "XLI", "XLII", "XLIII", "XLIV", "XLV", "XLVI", "XLVII", "XLVII", "XLVIII", "XLIX", "L", "LI", "LII", "LIII", "LIV", "LV", "LVI", "LVII", "LVIII", "LIX", "LX", "LXI", "LXII", "LXIII", "LXIV", "LXV", "LXVI", "LXVII", "LXVIII", "LXIX", "LXX", "LXXI", "LXXII", "LXXIII", "LXXIV", "LXXV", "LXXVI", "LXXVII", "LXXVIII", "LXXIX", "LXXX", "LXXXI", "LXXXII", "LXXXIII", "LXXXIV", "LXXXV", "LXXXVI", "LXXXVII", "LXXXVIII", "LXXXIX", "XC", "XCI", "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII", "XCVIII", "XCVIX", "C"};
-    private static String[] exercise = null;
-    private static String sign = null;
-    private static String answer = null;
+    private static final String answer = null;
 
     public static void main(String[] args) throws Exception {
         System.out.println("Введите выражение с двумя целыми числами от 1 до 10");
@@ -18,8 +16,8 @@ public class Main {
     }
 
     public static String calc(String input) throws Exception {
-        exercise = input.split(" ");
-        sign = exercise[1];
+        String[] exercise = input.split(" ");
+        String sign = exercise[1];
         if ((!(exercise[1].equals("+")) && !(exercise[1].equals("-")) && !(exercise[1].equals("*")) && !(exercise[1].equals("/"))) || exercise.length != 3 || (Arrays.asList(ROMAN).contains(exercise[0]) && Arrays.asList(NUM).contains(exercise[2])) || (Arrays.asList(NUM).contains(exercise[0]) && Arrays.asList(ROMAN).contains(exercise[2]))) {
             throw new Exception();
         }
@@ -31,14 +29,12 @@ public class Main {
                     int answerRomPlus = posA + posB;
                     String answerRoman = ROMAN[answerRomPlus - 1];
                     System.out.println(answerRoman);
-                    break;
                 }
                 case "-" -> {
                     if (posA > posB) {
                         int answerRomMin = posA - posB;
                         String answerRoman = ROMAN[answerRomMin - 1];
                         System.out.println(answerRoman);
-                        break;
                     } else {
                         throw new Exception();
                     }
@@ -47,19 +43,16 @@ public class Main {
                     int answerRomMultiply = posA * posB;
                     String answerRoman = ROMAN[answerRomMultiply];
                     System.out.println(answerRoman);
-                    break;
                 }
                 case "/" -> {
                     int answerRomDiv = posA / posB;
                     String answerRoman = ROMAN[answerRomDiv - 1];
                     System.out.println(answerRoman);
-                    break;
                 }
             }
             return answer;
         }
         if (Arrays.asList(NUM).contains(exercise[0]) && Arrays.asList(NUM).contains(exercise[2])) {
-
             int a = Integer.parseInt(exercise[0]);
             int b = Integer.parseInt(exercise[2]);
             switch (sign) {
